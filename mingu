@@ -1,0 +1,28 @@
+import csv
+
+total_empty = 0
+
+class parking_zone:
+    def __init__(self, zone, empty):
+        global total_empty
+        self.zone = zone 
+        self.empty = int(empty)   # CSV에서 읽은 값은 문자열이므로 숫자로 변환
+        total_empty += self.empty   
+
+    def show(self):
+        print(f"{self.zone}에 {self.empty}개의 자리가 남아 있습니다.")
+
+
+# parking.csv 파일 읽기
+zones = []
+with open("parking.csv", "r", encoding="utf-8") as file:
+    reader = csv.DictReader(file)
+    for row in reader:
+        zone = parking_zone(row["zone"], row["remainum"])
+        zones.append(zone)
+
+# 각 구역 출력
+for z in zones:
+    z.show()
+
+print(f"\n전체 잔여 자리는 {total_empty}곳 입니다.")

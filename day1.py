@@ -50,3 +50,5 @@ def save_movie(filename):
 load_movies("movie.csv")
 add_movie()
 save_movie("movie.csva")
+
+movie1 = Movie("주토피아", 120, 12)
